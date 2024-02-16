@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/car/CarIndex.css') }}">
+{% endblock %}
+
+{% block title %}Car{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>Voitures</h1>
+        <a class="ajouter" href="{{ path('app_car_new') }}">Ajouter</a>
+    </header>
+    <main>
+        {% for car in cars %}
+        <div class="car-affichage">
+            {% for image in car.picture %} 
+                <img class="picture" id="{{ asset('/cars_picture/' ~ image.picturecarNAME) }}" alt="{{ car.id }}">
+            {% endfor %}
+            <div class="img-contenant">
+                <img data-test class="img" id="{{ car.id }}" src="{{ asset('/cars_picture/' ~ car.picture[0].picturecarNAME) }}" alt="Image" decoding="async">
+            </div>
+            <button href="{{ car.id }}" class="prev-button">Prev</button>
+            <button href="{{ car.id }}" class="next-button">Next</button>
+
+            <span class="titre-car">{{ car.name }}</span>
+            <div class="">
+                <p>Prix: {{ car.price }} €</p>
+                <p>Kilométrage: {{ car.killometering }} km</p>
+            </div>
+                <p>mise en circulation: {{ car.circulation }}</p>
+                <h2>informations suplémentaire</h2>
+            <div class="infos-suplementaire">
+                <div class="infos-suplementaire__colonne">
+                    <div class="infos-suplementaire__colonne__style">
+                        <p>Marque</p>
+                        {% if car.brand == null %}
+                            <p class="infos-style">non renseigné</p>
+                        {% else %}
+                            <p class="infos-style">{{ car.brand }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="infos-suplementaire__colonne__style">
+                        <p>Carburant</p>
+                        {% if car.fuel == null %}
+                            <p class="infos-style">non renseigné</p>
+                        {% else %}
+                            <p class="infos-style">{{ car.fuel }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="infos-suplementaire__colonne__style">
+                        <p>Couleur</p>
+                        {% if car.color == null %}
+                            <p class="infos-style">non renseigné</p>
+                        {% else %}
+                            <p class="infos-style">{{ car.color }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="infos-suplementaire__colonne__style">
+                        <p>Puissance fiscale</p>
+                        {% if car.fiscalpower == null %}
+                            <p class="infos-style">non renseigné</p>
+                        {% else %}
+                            <p class="infos-style">{{ car.fiscalpower }} Cv</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="infos-suplementaire__colonne">
+                    <div class="infos-suplementaire__colonne__style">
+                        <p>Modéle</p>
+                        {% if car.model == null %}
+                            <p class="infos-style">non renseigné</p>
+                        {% else %}
+                            <p class="infos-style">{{ car.model }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="infos-suplementaire__colonne__style">
+                        <p>Boite de vitresse</p>
+                        {% if car.gearbox == null %}
+                            <p class="infos-style">non renseigné</p>
+                        {% else %}
+                            <p class="infos-style">{{ car.gearbox }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="infos-suplementaire__colonne__style">
+                        <p>Nombre de porte</p>
+                        {% if car.numberofdoors == null %}
+                            <p class="infos-style">non renseigné</p>
+                        {% else %}
+                            <p class="infos-style">{{ car.numberofdoors }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="infos-suplementaire__colonne__style">
+                        <p>Puissance DIN</p>
+                        {% if car.powerdin == null %}
+                            <p class="infos-style">non renseigné</p>
+                        {% else %}
+                            <p class="infos-style">{{ car.powerdin }} Ch</p>
+                        {% endif %}
+                    </div>    
+                </div>
+            </div>
+            <div class="autres-infos">
+                <h3>Autre infos</h3>
+                {% if car.otherinfo == null %}
+                    <p class="infos-style">non renseigné</p>
+                {% else %}
+                    <p class="infos-style">{{ car.otherinfo }}</p>
+                {% endif %}
+            </div>
+            <div class="btn-car">
+                <a class="btn-modifier" href="{{ path('app_car_edit', {'id': car.id}) }}">Modifier</a>
+                {{ include('car/_delete_form.html.twig') }}
+            </div>
+        </div>
+        {% else %}
+            <div>
+                <span>aucune annonce de voiture</span>
+            </div>
+        {% endfor %}
+    </main>
+    {# Vérifier si la route est "app_car_edit" on affiche les images #}
+    {% if app.request.attributes.get('_route') == 'app_car_edit' %}
+    <section>
+            <div class="affichage-picture">
+                <h3>Images</h3>
+                {% for image in car.picture %}
+                    <div class="picture">
+                        <img src="{{ asset('/cars_picture/' ~ image.name) }}"alt="Image" decoding="async" height="auto">
+                        <a href="{{ path('app_car_delete_image', {id: image.id}) }}" 
+                        data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                    </div>
+                {% endfor %}
+            </div>
+    </section>
+    {% endif %}
+
+    <footer class='pagination'>
+        {% for page in 1..totalPages %}
+            {% if page == currentPage %}
+                <span>{{ page }}</span>
+            {% else %}
+                <a class="page-non-courante" href="{{ path('app_car_index', {'page': page}) }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+    </footer>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/images.js') }}"></script>
+    <script src="{{ asset('js/defilerImages.js') }}"></script>
+{% endblock javascripts %}

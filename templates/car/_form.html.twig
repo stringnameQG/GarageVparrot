@@ -1,0 +1,57 @@
+{{ form_start(form) }}
+<header>
+    <h1>Voitures</h1>
+    <a class="retour-list" href="{{ path('app_car_index') }}">retour à la list</a>
+    <button class="btn-ajouter">{{ button_label|default('Ajouter') }}</button>
+</header>
+<main>
+    {{ form_row(form.name) }}
+    <div>
+        {{ form_row(form.price) }}
+        {{ form_row(form.killometering) }}
+    </div>
+    {{ form_row(form.circulation) }}
+    <div>
+        <h2>informations suplémentaire</h2>
+    </div>
+    <div class="infos-suplementaire">
+        <div class="infos-suplementaire__colonne">
+            {{ form_row(form.brand) }}
+            {{ form_row(form.fuel) }}
+            {{ form_row(form.color) }}
+            {{ form_row(form.fiscalpower) }}
+        </div>
+        <div class="infos-suplementaire__colonne">
+            {{ form_row(form.model) }}
+            {{ form_row(form.gearbox) }}
+            {{ form_row(form.numberofdoors) }}
+            {{ form_row(form.powerdin) }}   
+        </div>
+    </div>
+    <div class="autres-infos">
+        {{ form_row(form.otherinfo) }}
+    </div>
+    
+    {# On essaie de rendre les images obligatoires pour new et pas edit #}
+    {% if app.request.attributes.get('_route') == 'app_car_new' %}
+        {{ form_row(form.pictures, {'attr': {'required': 'true'}}) }}
+    {% else %}
+        {{ form_row(form.pictures) }}
+    {% endif %}
+</main>
+<section>
+{# Vérifier si la route est "annonces_edit" on affiche les images #}
+    {% if app.request.attributes.get('_route') == 'app_car_edit' %}
+        <div class="affichage-picture">
+            <h3>Images</h3>
+            {% for image in car.picture %}
+                <div class="picture">
+                    <img src="{{ asset('/cars_picture/' ~ image.picturecarNAME) }}"alt="Image" decoding="async" height="auto" width="150px">
+                    <a class="btn-supprimer-image" href="{{ path('app_car_delete_image', {id: image.id}) }}" 
+                    data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>
+{{ form_end(form) }}

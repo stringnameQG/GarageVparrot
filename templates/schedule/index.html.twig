@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/schedule/schedule.css') }}">
+{% endblock %}
+
+{% block title %}Horaires{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>Horaires</h1>
+    </header>
+    <main>
+        {% for schedule in schedules %}
+            <div class="horaires-affichage">
+                <div class="horaires-affichage__Active">
+                    <p class="horaires-affichage__Active__day">{{ schedule.day }}</p>
+                    {% if schedule.Active == 1 %}
+                    <p class="horaires-affichage__Active__actif">Actif</p>
+                    {% else %}
+                    <p class="horaires-affichage__Active__inactif">Inactif</p>
+                    {% endif  %}
+                </div>
+                <div>
+                    <div class="horaires-affichage__openAM">
+                        <p class="horaires-affichage__openAM-description">Ouverture matin</p>
+                        <p>{{ schedule.openAM ? schedule.openAM|date('H:i') : '' }}</p>
+                    </div>
+                    <div class="horaires-affichage__closeAM">
+                        <p class="horaires-affichage__closeAM-description">Fermeture matin</p>
+                        <p>{{ schedule.closeAM ? schedule.closeAM|date('H:i') : '' }}</p>
+                    </div>
+                    <div class="horaires-affichage__openPM">
+                        <p class="horaires-affichage__openPM-description">Ouverture soire</p>
+                        <p>{{ schedule.openPM ? schedule.openPM|date('H:i') : '' }}</p>
+                    </div>
+                    <div class="horaires-affichage__closePM">
+                        <p class="horaires-affichage__closePM-description">Fermeture soire</p>
+                        <p>{{ schedule.closePM ? schedule.closePM|date('H:i') : '' }}</p>
+                    </div>
+                </div>
+                <div class="horaires-affichage__modifier">
+                    <a class="btn-modifier" href="{{ path('app_schedule_edit', {'id': schedule.id}) }}">Modifier</a>
+                </div>
+            </div>
+        {% else %}
+            <div>
+                <h2>Erreur aucun Horaires</h2>
+            </div>
+        {% endfor %}
+    </main>
+{% endblock %}

@@ -1,0 +1,32 @@
+{{ form_start(form, {'attr': {'class': 'formulaire-contacte'}}) }}
+    <div class="formulaire-contacte__content">
+        {% if app.request.attributes.get('_route') != 'app_view_edit' %}
+            <img class="formulaire-contacte__close-icon" src="{{ asset('dossier-image/nav/x-circle.svg') }}">
+        {% endif %}
+        <h2 class="formulaire-contacte__titre">Formulaire de contacte</h2>
+        <div class="formulaire-contacte__subject">
+            {{ form_row(form.subject) }}
+        </div>
+        <div class="formulaire-contacte__name">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="formulaire-contacte__firstname">
+            {{ form_row(form.firstname) }}
+        </div>
+        <div class="formulaire-contacte__email">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="formulaire-contacte__phone">
+            {{ form_row(form.phone) }}
+        </div>
+        <div class="formulaire-contacte__missive">
+            {{ form_row(form.missive) }}
+        </div>
+        {# Vérifier si la route est "view_edit" on affiche les images #}
+        {% if app.request.attributes.get('_route') == 'app_view_edit' %}
+        
+        {% else %}
+        {% endif %}
+        <button class="btn-avis-valide">{{ button_label|default('ENVOYER') }}</button>
+    </div>
+{{ form_end(form) }}

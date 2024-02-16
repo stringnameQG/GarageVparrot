@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta charset="UTF-8">
+    	<title>{% block title %}Admin Gestion{% endblock %}</title>
+    	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    	{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+		{% endblock %}
+	</head>
+	<body>
+    	{% block body %}
+		<main>
+			<ul class="gestion-list">
+				<li class="gestion-list__item"><a class="lien" href="{{ path('app_view_index') }}">Avis</a></li>	
+				<li class="gestion-list__item"><a class="lien" href="{{ path('app_car_index') }}">Voitures</a></li>
+				<li class="gestion-list__item"><a class="lien" href="{{ path('app_contactform_index') }}">Formulaire de contacte</a></li>
+				<li class="gestion-list__item"><a class="lien" href="{{ path('app_schedule_index') }}">Horaires</a></li>
+				<li class="gestion-list__item"><a class="lien" href="{{ path('app_register_index') }}">Employer</a></li>
+				<li class="gestion-list__item"><a class="lien" href="{{ path('app_serve_index') }}">Services</a></li>
+			</ul>
+			<a class="btn-deconnexion" href="{{ path('app_logout') }}">Déconnecter</a>
+		</main>
+    	{% endblock %}
+	</body>
+</html>

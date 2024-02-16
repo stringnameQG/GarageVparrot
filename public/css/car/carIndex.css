@@ -1,0 +1,229 @@
+@font-face { 
+    font-family: LiberationSans-Regular; 
+    src: url('../../Police/LiberationSans-Regular.ttf');
+}
+.picture {
+    display: none;
+}
+body {
+    font-family: LiberationSans-Regular;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: 400;
+}
+header {
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+h1 {
+    margin: 2px;
+    font-size: 20px;
+}
+.titre-car {
+    padding: 4px;
+}
+.ajouter {
+    background-color: #1DCD1A;
+    color: #000000;
+    padding-left: 4px; padding-right: 4px;
+    padding-top: 3px;
+    width: fit-content;
+    height: 30px;
+    border-radius: 5px;
+    align-self: center;
+    font-size:  20px;
+    border: 1px solid #808080;
+    text-decoration: none;
+}
+.ajouter:hover {
+    background-color: #1ab518;
+}
+.ajouter:focus {
+    background-color: #19a217;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.car-affichage {
+    background-color: #F2EEEE;
+    padding: 4px;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 8px #4d4d4d;
+}
+div {
+    margin-top: 3px;  margin-bottom: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+p {
+    margin: 2px;
+}
+h2 {
+    margin-top: 4px; margin-bottom: 0px;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+.infos-suplementaire {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+.infos-style {
+    color: #666666;
+}
+.btn-modifier, .btn-supprimer {
+    height: fit-content;
+    color: #000000;
+    padding: 3px;
+    width: fit-content;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 0px;
+    font-family: LiberationSans-Regular;
+    border: 1px solid #808080;
+}
+.btn-modifier {
+    background-color: #E9E013;
+}
+.btn-modifier:hover {
+    background-color: #d7ce17;
+}
+.btn-modifier:focus {
+    background-color: #ccc317;
+}
+.btn-supprimer {
+    background-color: #e91313;
+}
+.btn-supprimer:hover {
+    background-color: #d21414;
+}
+.btn-supprimer:focus {
+    background-color: #b71414;
+}
+.infos-suplementaire__colonne {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.infos-suplementaire__colonne__style {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.autres-infos > div {
+    align-items: center;
+}
+.btn-car {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+h3 {
+    margin: 10px;
+    align-self: center;
+}
+.img-contenant {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+.img {
+    max-width: 100%;
+	height: auto;
+    border-radius: 4px;
+}
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+.page-non-courante {
+    color: #7c7c7c;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        font-size: 20px;
+        margin: 8px;
+    }
+    header {
+        margin: 8px;
+    }
+    h1, .btn-ajouter {
+        font-size: 24px;
+    }
+    main {
+        padding: 5px;
+    }
+    div {
+        margin-top: 4px;  margin-bottom: 4px;
+    }
+    h3 {
+        margin-top: 6px; margin-bottom: 6px;
+    }
+
+    form {
+        height: fit-content;
+        display: grid;
+        grid-template:
+            "header header" auto
+            "main section" 500px / auto auto;
+        gap: 10px;
+    }
+    header {
+        grid-area: header;
+    }
+    main {
+        grid-area: main;
+        max-width: 100%;
+        width: fit-content;
+        min-width: 400px;
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        flex-wrap: wrap;
+        
+    }
+    .car-affichage {
+        background-color: #F2EEEE;
+        padding: 4px;
+        max-width: 31vw;
+        width: 31vw;
+        border-radius: 5px;
+    }
+    section {
+        grid-area: section;
+        width: fit-content;
+    }
+    .affichage-picture {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
+    .btn-car {
+        height: 26px;
+    }
+    .btn-modifier, .btn-supprimer {
+        font-size: 20px;
+    }
+    form {
+        height: 4px;
+    }
+}

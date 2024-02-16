@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/contactform/contactform.css') }}">
+{% endblock %}
+
+{% block title %}Formulaire De Contacte{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>Formulaire De Contacte</h1>
+    </header>
+    <main>
+        {% for contactform in contactforms %}
+            <div class="formulaire-affichage">
+                <div class="formulaire-affichage__subject">
+                    <p class="formulaire-affichage__name-description">Sujet</p>
+                    <p>{{ contactform.subject }}</p>
+                </div>
+                <div class="formulaire-affichage__name">
+                    <p class="formulaire-affichage__name-description">Nom</p>
+                    <p>{{ contactform.name }}</p>
+                </div>
+                <div class="formulaire-affichage__firstname">
+                    <p class="formulaire-affichage__firstname-description">Prénom</p>
+                    <p>{{ contactform.firstname }}</p>
+                </div>
+                <div class="formulaire-affichage__email">
+                    <p class="formulaire-affichage__email-description">E-mail</p>
+                    <p>{{ contactform.email }}</p>
+                </div>
+                <div class="formulaire-affichage__phone">
+                    <p class="formulaire-affichage__phone-description">Téléphone</p>
+                    <p>{{ contactform.phone }}</p>
+                </div>
+                <div class="formulaire-affichage__missive">
+                    <p class="formulaire-affichage__missive-description">Message</p>
+                    <p>{{ contactform.missive }}</p>
+                </div>
+                <div class="formulaire-affichage__btn">
+                    {{ include('contactform/_delete_form.html.twig') }}
+                </div>
+            </div class="formulaire-affichage__missive">
+            
+        {% else %}
+            <div>
+                <h2>Aucun Formulaire de contacte</h2>
+            </div>
+        {% endfor %}
+    </main>
+    <footer class='pagination'>
+        {% for page in 1..totalPages %}
+            {% if page == currentPage %}
+                <span>{{ page }}</span>
+            {% else %}
+                <a class="page-non-courante" href="{{ path('app_contactform_index', {'page': page}) }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+    </footer>
+{% endblock %}

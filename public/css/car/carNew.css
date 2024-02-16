@@ -1,0 +1,177 @@
+@font-face { 
+    font-family: LiberationSans-Regular; 
+    src: url('../../Police/LiberationSans-Regular.ttf');
+}
+
+body {
+    font-family: LiberationSans-Regular;
+    margin: 5px;
+    font-size: 16px;
+}
+header {
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+h1 {
+    margin: 2px;
+    font-size: 20px;
+}
+.retour-list {
+    padding: 4px;
+    background-color: #000000;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid #808080;
+}
+.retour-list:hover {
+    background-color: #343434;
+}
+.retour-list:focus {
+    background-color: #515151;
+}
+.btn-ajouter {
+    background-color: #1DCD1A;
+    width: fit-content;
+    height: 30px;
+    border-radius: 5px;
+    align-self: center;
+    font-size:  20px;
+    border: 0px;
+    border: 1px solid #808080;
+}
+.btn-ajouter:hover {
+    background-color: #1ab518;
+}
+.btn-ajouter:focus {
+    background-color: #19a217;
+}
+main {
+    background-color: #F2EEEE;
+    padding: 5px;
+    max-width: 500px;
+    border-radius: 5px;
+}
+div {
+    margin-top: 4px;  margin-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+label {
+    margin-bottom: 2px;
+}
+input {
+    height: 22px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-shadow: 5px 2px 5px #777777;
+}
+h2 {
+    margin-top: 4px; margin-bottom: 0px;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+.infos-suplementaire {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+.infos-suplementaire__colonne {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.input__name {
+    width: 200px;
+}
+.input__price, .input__killometering {
+    width: 65px;
+}
+.input__circulation {
+    width: 54px;
+}
+.autres-infos {
+    margin-top: 4px;  margin-bottom: 4px;
+}
+.input__brand, .input__model, .input__fuel, .input__gearbox, .input__color {
+    width: 72px;
+}
+.input__numberofdoors, .input__fiscalpower, .input__powerdin {
+    width: 34px;
+}
+.input__otherinfo {
+    width: 95%;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    resize: none;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    box-shadow: 5px 2px 5px #777777;
+}
+.input__pictures {
+    border: unset;
+    box-shadow: none;
+}
+.autres-infos > div {
+    align-items: center;
+}
+.retour-list {
+    color: #ffffff;
+    font-size: 20px;
+}
+.retour-list:visited {
+    color: #ffffff;
+}
+ul {
+    margin-top: 4px; margin-bottom: 4px;
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        font-size: 20px;
+        margin: 8px;
+    }
+    header {
+        margin: 8px;
+    }
+    h1, .btn-ajouter {
+        font-size: 24px;
+    }
+    main {
+        padding: 5px;
+    }
+    div {
+        margin-top: 4px;  margin-bottom: 4px;
+    }
+    label {
+        margin-bottom: 4px;
+    }
+    input {
+        height: 26px;
+    }
+    h2 {
+        margin-top: 6px;
+    }
+    .input__price, .input__killometering {
+        width: 100px;
+    }
+    .input__circulation {
+        width: 90px;
+    }
+    .autres-infos {
+        margin-top: 4px;  margin-bottom: 4px;
+    }
+    .input__brand, .input__model, .input__fuel, .input__gearbox, .input__color {
+        width: 95px;
+    }
+    .input__numberofdoors, .input__fiscalpower, .input__powerdin {
+        width: 48px;
+    }
+}

@@ -1,0 +1,41 @@
+{% extends 'modele.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/accueil/accueil.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/modele/formulaireAvis.css') }}">
+{% endblock %}
+{% block scripts %}
+	<script src="{{ asset('js/accueil/windowOnload.js') }}"></script>
+	<script src="{{ asset('js/jquery/jquery-3.7.1.min.js') }}"></script>
+	<script src="{{ asset('js/accueil/ajouterAvis.js') }}"></script>
+	<script src="{{ asset('js/accueil/chargementAvis.js') }}"></script>
+	<script src="{{ asset('php/accueil/avisAffichage.php') }}"></script>
+{% endblock %}
+{% block main %}
+	{% if serves is not null %}
+	<div class="services">
+		<h2 class="services__title">Nos services proposés</h2>
+		{% for serve in serves %}
+			<p class="services__service-name">. {{ serve.serveName }}</p>
+		{% endfor %}
+		<hr>
+	</div>
+	{% endif %}
+	<div class="vehicules">
+		<h2 class="vehicules__title">Nos véhicules</h2>
+		<p class="vehicules__text">Notre garage à pour spécialités la réparation et remise en état de véhicule d’occasion</p>
+		<hr>
+	</div>
+	<div class="avis">
+		<h2 class="avis__title">Avis clients</h2>
+		<div class="avis__commentaire-btn">
+			<button id="PlusDeCommentaires" class="avis__commentaire-btn__item">Plus de commentaires</button>
+			<button id="AjouterCommentaires" class="avis__commentaire-btn__item">Ajouter votre commentaire</button>
+		</div>
+	</div>
+{% endblock %}
+{% block body %}
+	{{ include('view/_form.html.twig') }}
+{% endblock %}

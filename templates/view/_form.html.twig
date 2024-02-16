@@ -1,0 +1,28 @@
+{{ form_start(formulaireAvis, {'attr': {'class': 'formulaire-avis'}}) }}
+    <div class="formulaire-avis__content">
+        {% if app.request.attributes.get('_route') != 'app_view_edit' %}
+            <img class="formulaire-avis__close-icon" src="{{ asset('dossier-image/nav/x-circle.svg') }}">
+        {% endif %}
+        <div class="formulaire-avis__name">
+            {{ form_row(formulaireAvis.name) }}
+        </div>
+        <div class="formulaire-avis__firstName">
+            {{ form_row(formulaireAvis.firstName) }}
+        </div>
+        <div class="formulaire-avis__comment">
+            {{ form_row(formulaireAvis.comment) }}
+        </div>
+        <div class="formulaire-avis__score">
+            {{ form_row(formulaireAvis.score) }}
+        </div>
+        <div class="formulaire-avis__active">
+            {{ form_row(formulaireAvis.active) }}
+        </div>
+        {# Vérifier si la route est "view_edit" on affiche les images #}
+        {% if app.request.attributes.get('_route') == 'app_view_edit' %}
+        
+        {% else %}
+        {% endif %}
+        <button class="btn-avis-valide">{{ button_label|default('ENVOYER') }}</button>
+    </div>
+{{ form_end(formulaireAvis) }}

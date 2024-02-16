@@ -1,0 +1,64 @@
+{% extends 'modele.html.twig' %}
+
+{% block title %}vehicule{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/vehicule/vehicule.css') }}">
+    
+{% endblock %}
+{% block scripts %}
+	<script src="{{ asset('js/vehicule/windowOnload.js') }}"></script>
+	<script src="{{ asset('js/jquery/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('js/vehicule/filtreVehicule.js') }}"></script>
+	<script src="{{ asset('php/vehicule/filtreVehicule.php') }}"></script>
+    <script src="{{ asset('js/vehicule/formulaireContacteAffichageVehicule.js') }}"></script>
+{% endblock %}
+{% block main %}
+	<form class="form-filtre" action="filtreVehicule.php" method="post" id"form">
+		<div class="filtre-prix">
+			<p>Prix</p>
+            <div class="filtre-prix__affichage">
+                <div class="def">
+                    <label for="prix-minimum">Minimum</label>
+                    <input type="number" name="prix-minimum" id="prix-minimum" min="0" max="1000000" value="0"/>
+                </div>
+                <div class="def">
+                    <label for="prix-maximum">Maximum</label>
+                    <input type="number" name="prix-maximum" id="prix-maximum" min="0" max="1000000" value="1000000"/>
+                </div>
+            </div>
+		</div>
+		<div class="filtre-killometrage">
+			<p>Killometrage</p>
+            <div class="filtre-killometrage__affichage">
+                <div class="def">
+                    <label for="killometrage-minimum">Minimum</label>
+                    <input type="number" name="killometrage-minimum" id="killometrage-minimum" min="0" max="1000000" value="0"/>
+                </div>
+                <div class="def">
+                    <label for="killometrage-maximum">Maximum</label>
+                    <input type="number" name="killometrage-maximum" id="killometrage-maximum" min="0" max="1000000" value="1000000"/>
+                </div>
+            </div>
+		</div>
+		<div class="filtre-anneeMiseEnCirculation">
+			<p>Anne mise en circulation</p>
+            <div class="filtre-anneeMiseEnCirculation__affichage">
+                <div class="def">
+                    <label for="anneeMiseEnCirculation-minimum">Minimum</label>
+                    <input type="number" name="anneeMiseEnCirculation-minimum" id="anneeMiseEnCirculation-minimum" min="1900" max="2200" value="1900"/>
+                </div>
+                <div class="def">
+                    <label for="anneeMiseEnCirculation-maximum">Maximum</label>
+                    <input type="number" name="anneeMiseEnCirculation-maximum" id="anneeMiseEnCirculation-maximum" min="1900" max="2200" value="2200"/>
+                </div>
+            </div>
+		</div>
+	</form>
+        <button class="serialisation" id="Serialisation">RECHERCHER</button>
+    <div class="affichage-vehicule">
+    </div>
+{% endblock %}
+{% block body %}
+	
+{% endblock %}

@@ -1,0 +1,173 @@
+@font-face { 
+    font-family: LiberationSans-Regular; 
+    src: url('../../Police/LiberationSans-Regular.ttf');
+}
+.picture {
+    display: none;
+}
+body {
+    font-family: LiberationSans-Regular;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: 400;
+}
+header {
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+h1 {
+    margin: 2px;
+    font-size: 20px;
+}
+.titre-car {
+    padding: 4px;
+}
+.ajouter {
+    background-color: #1DCD1A;
+    color: #000000;
+    padding-left: 4px; padding-right: 4px;
+    padding-top: 3px;
+    width: fit-content;
+    height: 30px;
+    border-radius: 5px;
+    align-self: center;
+    font-size:  20px;
+    border: 1px solid #808080;
+    text-decoration: none;
+}
+.ajouter:hover {
+    background-color: #1ab518;
+}
+.ajouter:focus {
+    background-color: #19a217;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+p {
+    margin: 0px;
+    margin-top: 4px; margin-bottom: 4px;
+}
+.avis-affichage {
+    width: 350px;
+    padding: 6px;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border-radius: 5px;
+}
+.avis-affichage__name, .avis-affichage__firstName, .avis-affichage__score, .avis-affichage__active {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.avis-affichage__name-description, .avis-affichage__firstName-description, .avis-affichage__score-description {
+    font-weight: 600;
+}
+.avis-affichage__name {
+    gap: 34px;
+}
+.avis-affichage__firstName {
+    gap: 10px;
+}
+.avis-affichage__score {
+    gap: 35px;
+}
+.avis-affichage__comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.avis-affichage__btn {
+    padding-left: 10px; padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.avis-affichage__btn__valider {
+    background-color: #1DCD1A;
+}.avis-affichage__btn__non-valider {
+    background-color: #FBA11B;
+}
+.avis-affichage__btn__valider:hover {
+    background-color: #1ab518;
+}
+.avis-affichage__btn__valider:focus {
+    background-color: #19a217;
+}
+.avis-affichage__btn__non-valider:hover {
+    background-color: #e1911a;
+}
+.avis-affichage__btn__non-valider:focus {
+    background-color: #d08617;
+}
+.avis-affichage__btn__valider, .avis-affichage__btn__non-valider {
+    color: #000000;
+    margin: 0px;
+    padding-left: 4px; padding-right: 4px;
+    padding-top: 3px; padding-bottom: 4px;
+    width: fit-content;
+    border-radius: 5px;
+    align-self: center;
+    font-size:  16px;
+}
+.avis-affichage__btn__supprimer {
+    background-color: #E3401C;
+    color: #000000;
+    margin: 0px;
+    padding-left: 4px; padding-right: 4px;
+    padding-top: 3px; padding-bottom: 4px;
+    width: fit-content;
+    border-radius: 5px;
+    align-self: center;
+    font-size:  16px;
+}
+
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+.page-non-courante {
+    color: #7c7c7c;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        min-height: calc(100vh - 16px);
+        height: fit-content;
+        font-size: 18px;
+        margin: 8px;
+    }
+    header {
+        margin: 8px;
+    }
+    h1, .btn-ajouter {
+        font-size: 24px;
+    }
+    main {
+        padding: 5px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .avis-affichage {
+        padding: 6px;
+        width: 31%;
+    }
+    footer {
+        width: calc(100% - 16px);
+        position: absolute;
+        bottom: 0;
+        justify-self: center;
+    }
+}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Serve{% endblock %}
+
+{% block body %}
+    <h1>Serve</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ serve.id }}</td>
+            </tr>
+            <tr>
+                <th>ServeName</th>
+                <td>{{ serve.serveName }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ serve.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_serve_index') }}">back to list</a>
+
+    <a href="{{ path('app_serve_edit', {'id': serve.id}) }}">edit</a>
+
+    {{ include('serve/_delete_form.html.twig') }}
+{% endblock %}

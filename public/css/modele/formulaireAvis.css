@@ -1,0 +1,85 @@
+.avis-floux { 
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    
+}
+.formulaire-avis {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    z-index: 3;
+    position: fixed;
+    top: calc(50vh - (370px + 107px));
+}
+.formulaire-avis__content {
+    background-color: #ffffff;
+    width: 330px;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 4px 4px 7px #aaaaaa;
+    
+}
+.formulaire-avis__close-icon {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    align-self: end;
+}
+label {
+    display: block;
+}
+.input__avis-nom, .input__avis-prenom, .input__avis-commentaire, .input__avis-note {
+    width: 308px;
+    height: 28px;
+    justify-self: center;
+    line-height: 18px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-shadow: 4px 4px 5px #aaaaaa;
+}
+textarea {
+    resize: none;
+}
+.formulaire-avis__score {
+    margin-left: 8px;
+    align-self: self-start;
+}
+.input__active-note {
+    width: 30px;
+}
+.formulaire-avis__active {
+    display: none;
+}
+.btn-avis-valide {
+    background-color: #CECECE;
+    width: 112px;
+    height: 32px;
+    border: 1px solid #000000;
+    font-size: 16px;
+    border-radius: 6px;
+    box-shadow: 4px 4px 5px #aaaaaa;
+}
+
+@media screen and (min-width: 1000px) {
+
+
+
+
+    .formulaire-avis__close-icon {
+        width: 40px;
+        height: 40px;
+        align-self: end;
+    }
+}

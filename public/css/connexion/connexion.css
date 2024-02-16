@@ -1,0 +1,65 @@
+@font-face { 
+    font-family: LiberationSans-Regular; 
+    src: url('../../Police/LiberationSans-Regular.ttf');
+}
+.formulaire-connexion {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    z-index: 3;
+    position: fixed;
+    top: calc(50vh - (370px + 107px));
+    font-family: LiberationSans-Regular;
+}
+.formulaire-connexion__content {
+    background-color: #ffffff;
+    width: 330px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-self: center;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 4px 4px 7px #aaaaaa;
+}
+.formulaire-connexion__close-icon {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    align-self: end;
+}
+label {
+    display: block;
+}
+.input__email, .input__password {
+    width: 308px;
+    height: 28px;
+    justify-self: center;
+    line-height: 18px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+}
+.btn-connexion-valide {
+    background-color: #CECECE;
+    width: 112px;
+    height: 32px;
+    border: 1px solid #000000;
+    font-size: 16px;
+    border-radius: 6px;
+}
+.btn-connexion-valide:hover {
+    background-color: #aaaaaa;
+}
+
+@media screen and (min-width: 1000px) {
+    .formulaire-connexion__close-icon {
+        width: 40px;
+        height: 40px;
+        align-self: end;
+    }
+}

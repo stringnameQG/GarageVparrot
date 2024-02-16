@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/connexion/connexion.css') }}">
+{% endblock %}
+{% block body %}
+<form class="formulaire-connexion" method="post">
+    <div class="formulaire-connexion__content">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+        <div class="formulaire-connexion__email">
+            <label for="inputEmail">e-mail</label>
+            <input class="input__email" type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        </div>
+        <div class="formulaire-connexion__password">
+            <label for="inputPassword">Mot de passe</label>
+            <input class="input__password" type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        </div>
+        <button class="btn-connexion-valide" type="submit">
+            Sign in
+        </button>
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+    </div>
+</form>
+{% endblock %}

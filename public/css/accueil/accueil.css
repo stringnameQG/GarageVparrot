@@ -1,0 +1,127 @@
+@font-face { 
+    font-family: LiberationSans-Regular; 
+    src: url('../../Police/LiberationSans-Regular.ttf');
+}
+@font-face { 
+    font-family: ModernSans-Light; 
+    src: url('../../Police/ModernSans-Light.otf');
+}
+main {
+    align-items: center;
+    display: grid;
+    grid-template-areas: 
+                "services"
+                "vehicules"
+                "avis";
+    grid-template-rows: fit-content fit-content 1fr;
+}
+.services {
+    grid-area: services;
+    justify-self: center;
+}
+.vehicules {
+    grid-area: vehicules;
+    justify-self: center;
+}
+.avis {
+    grid-area: avis;
+    justify-self: center;
+}
+.services, .vehicules, .avis, .avis__commentaire-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.services, .vehicules, .avis {
+    width: 360px;
+}
+.services__title, .vehicules__title, .avis__title {
+    margin-top: 6px; margin-bottom: 6px;
+    text-align: center;
+    font-weight: 400;
+}
+.services__service-name, .services__service-score, .vehicules__text {
+    margin-top: 2px; margin-bottom: 2px;
+    text-align: start;
+}
+.services__service-name, .services__service-score {
+    width: fit-content;
+}
+hr {
+    border-bottom: 0px;
+    width: 100%;
+}
+.avis__commentaire-affichage, .avis__commentaire-btn {
+    align-items: center;
+    gap: 10px;
+}
+.avis__commentaire-affichage {
+    margin: 6px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 1px solid #C5C5C5;
+    box-shadow: 4px 4px 7px #aaaaaa;
+}
+.avis__commentaire-affichage__nom-prenom{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: start;
+}
+.avis__commentaire-affichage__nom-prenom__item {
+    margin: 2px;
+}
+.avis__commentaire-affichage__commentaire {
+    justify-self: start;
+}
+.avis__commentaire-btn {
+    margin: 6px;
+}
+.avis__commentaire-btn__item {
+    padding-top: 2px; padding-bottom: 2px;
+    width: fit-content;
+    background-color: #000000;
+    color: white;
+    font-family: ModernSans-Light;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+}
+.avis__commentaire-btn__item:hover {
+    background-color: #3c3c3c;
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        grid-template-areas: 
+                    "services avis"
+                    "vehicules avis"
+                    ". avis";
+        grid-template-rows: 330px 330px fit-content;
+        grid-template-columns: 1fr 1fr;
+    }
+    .services {
+        height: 330px;
+        position: relative;
+        bottom: -10px;
+        right: -30px;
+    }
+    .vehicules {
+        height: 330px;
+        align-self: self-start;
+        position: relative;
+        top: -50px;
+        right: -30px;
+    }
+    .avis {
+        margin-top: 50px;
+        width: 500px;
+        align-self: self-start;
+        position: relative;
+        left: -30px;
+    }
+}

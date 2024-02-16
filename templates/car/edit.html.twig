@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/car/CarEdit.css') }}">
+{% endblock %}
+
+{% block title %}Modifier Vehicule{% endblock %}
+
+{% block body %}
+
+    {{ include('car/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+ 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/images.js') }}"></script>
+{% endblock javascripts %}

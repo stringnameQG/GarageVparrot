@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/employer/employer.css') }}">
+{% endblock %}
+
+{% block title %}Employer{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>Employer</h1>
+        <a class="ajouter" href="{{ path('app_view_new') }}">Ajouter</a>
+    </header>
+    <main>
+        {% for user in users %}
+            {% if user.roles[0] != "ROLE_ADMIN" %}
+            <div class="users-affichage">
+                <div class="users-affichage__e-mail">
+                    <p class="users-affichage__e-mail-description">e-mail</p>
+                    <p>{{ user.email }}</p>
+                </div>
+                <div class="users-affichage__delete">
+                {{ include('registration/_delete_form.html.twig') }}
+                </div>
+            </div>
+            {% endif %}
+        {% else %}
+            <div>
+                <h2>Aucun avis</h2>
+            </div>
+        {% endfor %}
+    </main>
+    <footer class='pagination'>
+        {% for page in 1..totalPages %}
+            {% if page == currentPage %}
+                <span>{{ page }}</span>
+            {% else %}
+                <a class="page-non-courante" href="{{ path('app_register_index', {'page': page}) }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+    </footer>
+{% endblock %}

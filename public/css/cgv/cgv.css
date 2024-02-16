@@ -1,0 +1,43 @@
+@font-face { 
+    font-family: LiberationSans-Regular; 
+    src: url('../../Police/LiberationSans-Regular.ttf');
+}
+@font-face { 
+    font-family: ModernSans-Light; 
+    src: url('../../Police/ModernSans-Light.otf');
+}
+.cgv {
+    padding-left: 4px; padding-right: 4px;
+}
+h1 {
+    margin-top: 12px; margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+h2 {
+    margin-top: 10px; margin-bottom: 8px;
+    font-size: 18px;
+}
+p {
+    margin-top: 4px; margin-bottom: 4px;
+    font-size: 14px;
+}
+
+@media screen and (min-width: 1000px) {
+    .mentionslegale {
+        padding-left: 8px; padding-right: 8px;
+    }
+    h1 {
+        margin-top: 10px; margin-bottom: 16px;
+        text-align: start;
+        font-size: 24px;
+    }
+    h2 {
+        margin-top: 10px; margin-bottom: 8px;
+        font-size: 20px;
+    }
+    p {
+        margin-top: 4px; margin-bottom: 4px;
+        font-size: 18px;
+    }
+}

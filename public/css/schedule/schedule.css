@@ -1,0 +1,153 @@
+@font-face { 
+    font-family: LiberationSans-Regular; 
+    src: url('../../Police/LiberationSans-Regular.ttf');
+}
+.picture {
+    display: none;
+}
+body {
+    font-family: LiberationSans-Regular;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: 400;
+}
+header {
+    margin: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+h1 {
+    margin: 2px;
+    font-size: 20px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+p {
+    margin: 0px;
+    margin-top: 4px; margin-bottom: 4px;
+}
+.horaires-affichage {
+    width: 350px;
+    padding: 6px;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 5px;
+}
+.horaires-affichage__day {
+    height: 100%;
+    display: flex;
+}
+.horaires-affichage__Active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.horaires-affichage__Active__day {
+    font-weight: 600;
+}
+.horaires-affichage__Active__actif, .horaires-affichage__Active__inactif {
+    color: #000000;
+    margin: 0px;
+    padding-left: 4px; padding-right: 4px;
+    padding-top: 4px; padding-bottom: 4px;
+    width: fit-content;
+    border-radius: 5px;
+    align-self: center;
+    font-size:  16px;
+}
+.avis-affichage__btn {
+    padding-left: 10px; padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.horaires-affichage__Active__actif {
+    background-color: #1DCD1A;
+    border-radius: 5px;
+}
+.horaires-affichage__Active__inactif {
+    background-color: #c53819;
+    border-radius: 5px;
+}
+.horaires-affichage__openAM,
+.horaires-affichage__closeAM,
+.horaires-affichage__openPM,
+.horaires-affichage__closePM {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 10px;
+}
+.formulaire-affichage__btn {
+    align-self: center;
+}
+.formulaire-affichage__btn__supprime {
+    background-color: #E3401C;
+    color: #000000;
+    margin: 0px;
+    padding-left: 4px; padding-right: 4px;
+    padding-top: 3px; padding-bottom: 4px;
+    width: fit-content;
+    border-radius: 5px;
+    align-self: center;
+    font-size:  16px;
+}
+.formulaire-affichage__btn__supprime:hover {
+    background-color: #c53819;
+}
+.horaires-affichage__modifier {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.btn-modifier {
+    background-color: #fcd743;
+    color: #000000;
+    margin: 0px;
+    padding-left: 4px; padding-right: 4px;
+    padding-top: 3px; padding-bottom: 4px;
+    width: fit-content;
+    border-radius: 5px;
+    align-self: center;
+    font-size:  16px;
+    text-decoration: none;
+}
+.btn-modifier:hover {
+    background-color: #e6c43f;
+}
+
+
+@media screen and (min-width: 1000px) {
+    body {
+        min-height: calc(100vh - 16px);
+        height: fit-content;
+        font-size: 16px;
+        margin: 6px;
+    }
+    header {
+        margin: 8px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    main {
+        padding: 5px;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: start;
+        gap: 1fr;
+    }
+    .horaires-affichage {
+        padding: 6px;
+        width: 31%;
+    }
+}

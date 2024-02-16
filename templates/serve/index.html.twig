@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/serv/serv.css') }}">
+{% endblock %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>Services</h1>
+        <a class="ajouter" href="{{ path('app_serve_new') }}">Ajouter</a>
+    </header>
+    <main>
+        {% for serve in serves %}
+            <div class="serves-affichage">
+                <div class="serves-affichage__serveName">
+                    <p class="serves-affichage__serveName-description">Nom</p>
+                    <p>{{ serve.serveName }}</p>
+                </div>
+                <div class="serves-affichage__description">
+                    <p class="serves-affichage__description-description">Description</p>
+                    <p>{{ serve.description }}</p>
+                </div>
+                <div class="serves-affichage__button">
+                    <a class="btn-modifier" href="{{ path('app_serve_edit', {'id': serve.id}) }}">Modifier</a>
+                    {{ include('serve/_delete_form.html.twig') }}
+                </div>
+            </div>
+        {% else %}
+            <div>
+                <h2>Aucun services</h2>
+            </div>
+        {% endfor %}
+    </main>
+    <footer class='pagination'>
+        {% for page in 1..totalPages %}
+            {% if page == currentPage %}
+                <span>{{ page }}</span>
+            {% else %}
+                <a class="page-non-courante" href="{{ path('app_serve_index', {'page': page}) }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+    </footer>
+{% endblock %}

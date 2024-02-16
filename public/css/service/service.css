@@ -1,0 +1,60 @@
+@font-face { 
+    font-family: LiberationSans-Regular; 
+    src: url('../../Police/LiberationSans-Regular.ttf');
+}
+@font-face { 
+    font-family: ModernSans-Light; 
+    src: url('../../Police/ModernSans-Light.otf');
+}
+main {
+    align-items: center;
+    display: grid;
+    grid-template-areas: 
+                "services";
+    grid-template-rows: fit-content;
+}
+h1 {
+    margin: 0px;
+}
+hr {
+    border-bottom: 0px;
+    width: 100%;
+}
+.services {
+    grid-area: services;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+.services-decoration {
+    display: none;
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        grid-template-areas: 
+                    "services services-decoration";
+        grid-template-columns: 50% ;
+    }
+    .services, .services-decoration {
+        width: 60%;
+    }
+    .services {
+        justify-self: end;
+
+    }
+    .services-decoration {
+        height: 100%;
+        grid-area: services-decoration;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        justify-self: center;
+    }
+    .services-decoration__img {
+        width: 400px;
+        border-radius: 15px;
+        align-self: center;
+    }
+}

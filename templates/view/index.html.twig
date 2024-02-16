@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/view/view.css') }}">
+{% endblock %}
+
+{% block title %}Avis{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>Avis</h1>
+        <a class="ajouter" href="{{ path('app_view_new') }}">Ajouter</a>
+    </header>
+    <main>
+        {% for view in views %}
+            <div class="avis-affichage">
+                <div class="avis-affichage__name">
+                    <p class="avis-affichage__name-description">Nom</p>
+                    <p>{{ view.name }}</p>
+                </div>
+                <div class="avis-affichage__firstName">
+                    <p class="avis-affichage__firstName-description">Prénom</p>
+                    <p>{{ view.firstName }}</p>
+                </div>
+                <div class="avis-affichage__score">
+                    <p class="avis-affichage__score-description">Note</p>
+                    <p>{{ view.score }}/5</p>
+                </div>
+                <div class="avis-affichage__comment">
+                    <p>Commentaire</p>
+                    <p>{{ view.comment }}</p>
+                </div>
+                <div class="avis-affichage__btn">
+                    {% if view.active == 1 %}
+                    <p class="avis-affichage__btn__valider">Valider</p>
+                    {% else %}
+                    <p class="avis-affichage__btn__non-valider">Valider</p>
+                    {% endif  %}
+                    {{ include('view/_delete_form.html.twig') }}
+                </div>
+            </div>
+        {% else %}
+            <div>
+                <h2>Aucun avis</h2>
+            </div>
+        {% endfor %}
+    </main>
+    <footer class='pagination'>
+        {% for page in 1..totalPages %}
+            {% if page == currentPage %}
+                <span>{{ page }}</span>
+            {% else %}
+                <a class="page-non-courante" href="{{ path('app_view_index', {'page': page}) }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+    </footer>
+{% endblock %}

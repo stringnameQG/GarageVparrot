@@ -1,0 +1,26 @@
+{% extends 'modele.html.twig' %}
+
+{% block title %}Service{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/service/service.css') }}">
+{% endblock %}
+{% block scripts %}
+	<script src="{{ asset('js/modele/windowOnload.js') }}"></script>
+	<script src="{{ asset('js/modele/navAffichage.js') }}"></script>
+{% endblock %}
+{% block main %}
+	<div class="services">
+	{% for serve in serves %}
+    <div class="services__contend">
+        <h1>{{ serve.serveName }}</h1>
+        <p>{{ serve.description }}</p>
+		<hr>
+    </div>
+    {% endfor %}
+	</div>
+	<div class="services-decoration">
+		<img class="services-decoration__img" src="{{ asset('dossier-image/service/Carrosserie-coupe.jpg') }}">
+		<img class="services-decoration__img" src="{{ asset('dossier-image/service/Carrosserie-polissage.jpg') }}">
+	<div>
+{% endblock %}

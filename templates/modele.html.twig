@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="stylesheet" href="{{ asset('css/modele/base.css') }}">
+        {% block stylesheets %}
+        {% endblock %}
+        {% block scripts %}
+        {% endblock %}
+        <script src="{{ asset('js/modele/navAffichage.js') }}"></script>
+        <script src="{{ asset('js/modele/formulaireContacteAffichage.js') }}"></script>
+    </head>
+    {# On détecte le changement de largeur de l'écran pour modifier l'affichage de la nav barre #}
+    <body onresize="resizeWindowWidth()">
+        <header>
+            <img class="logo" src="{{ asset('dossier-image/header/Logo.png') }}">
+            <img class="nav-icon" src="{{ asset('dossier-image/header/nav.svg') }}">
+            <nav class="nav-list">
+                <img class="nav-list__close-icon" src="{{ asset('dossier-image/nav/x-circle.svg') }}">
+                <a class="nav-list__item" href="{{ path('app_accueil') }}">Accueil</a>
+                <a class="nav-list__item" href="{{ path('app_vehicule') }}">Voiture</a>
+                <a class="nav-list__item" href="{{ path('app_service') }}">Service</a>
+                <a class="nav-list__item" href="{{ path('app_mentionslegale') }}">Mentions Légale</a>
+                <a class="nav-list__item" href="{{ path('app_cgv') }}">CGV</a>
+            {% if is_granted('ROLE_ADMIN') %} 
+                <a class="nav-list__item" href="{{ path('app_admingestion') }}">Admin Gestion</a>
+            {% elseif is_granted('ROLE_USER') %}
+                <a class="nav-list__item" href="{{ path('app_employergestion') }}">Employer Gestion</a>
+            {% else %}
+                <a class="nav-list__item" href="{{ path('app_login') }}">Register</a>
+            {% endif %} 
+            </nav>
+        </header>
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        {% block body %}{% endblock %}
+        <aside>
+            {{ include('contactform/_form.html.twig') }}
+        </aside>
+        <footer>
+            <div class="nous-joindre">
+                <h3>NOUS JOINDRE</h3>
+                <p class="horaire-ouverture__jour">Téléphone: 07 45 23 15 49</p>
+                <p class="horaire-ouverture__jour">Ou via le <span class="formulaire-btn">formulaire</span></p>
+            </div>
+            <div class="nos-horaires">
+                <h3>Nos horaires</h3>
+                {# On récupére les horaires de notre table horaire #}
+                {% for schedule in schedules %}
+                    {# On vérifie que l'horaire est défini comme actif #}
+                    {% if  schedule.Active == 1 %}
+                        {# On vérifie que la longeure de la chaine schedule.day est supérieure ou égale à 3 #}
+                        {% if (schedule.day|length >= 3) %}
+                            {# On n'affiche que les 3 premier caractére #}
+                            <p class="horaire-ouverture__jour">{{ schedule.day|slice(0, 3) }}. 
+                        {# Sinon #}
+                        {% else %} 
+                            {# On renseigne le nom de la table horaire #}
+                            <p class="horaire-ouverture__jour">{{ schedule.day }}. 
+                        {% endif %}
+                        {# Si l'heure d'ouverture ou fermeture du matin est différent de 00:00 on renseigne leur horaire #}
+                        {% if schedule.openAM|date('H:i') != '00:00' or schedule.openAM|date('H:i') != '00:00'  %}
+                            {{ schedule.openPM ? schedule.openAM|date('H:i') : '' }} - 
+                            {{ schedule.closeAM ? schedule.closeAM|date('H:i') : '' }} ~
+                        {# Si l'heure d'ouverture ou fermeture du matin est defini sur 00:00 on renseigne fermé pour cette période #}
+                        {% else %}
+                        . Fermé
+                        {% endif %}
+                        {# Si l'heure d'ouverture ou fermeture du soir est différent de 00:00 on renseigne leur horaire #}
+                        {% if schedule.openPM|date('H:i') != '00:00' or schedule.closePM|date('H:i') != '00:00'  %}
+                            {{ schedule.openPM ? schedule.openPM|date('H:i') : '' }} - 
+                            {{ schedule.closePM ? schedule.closePM|date('H:i') : '' }}
+                        {# Si l'heure d'ouverture ou fermeture du soir est defini sur 00:00 on renseigne fermé pour cette période #}
+                        {% else %}
+                        . Fermé
+                        {% endif %}
+                        </p>
+                    {# Si l'horaire n'est pas actif on renseigne que pour ce jour c'est fermé #}
+                    {% else %}
+                    <p class="horaire-ouverture__jour">{{ schedule.day }} Fermé</p>
+                    {% endif %}
+                {% else %}
+                <p>Aucun horaire renseigné</p>
+                {% endfor %}
+            </div>
+            <div class="nos-medias">
+                <h3>Nos médias</h3>
+                <div class="icon">
+                    <a href="https://www.facebook.com/"><img class="icon__style" src="{{ asset('dossier-image/footer/facebook.svg') }}"></a>
+                    <a href="https://twitter.com/"><img class="icon__style" src="{{ asset('dossier-image/footer/x.svg') }}"></a>
+                    <a href="https://www.instagram.com/"><img class="icon__style" src="{{ asset('dossier-image/footer/instagram.svg') }}"></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
